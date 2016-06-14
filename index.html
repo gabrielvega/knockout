@@ -31,6 +31,19 @@
 		  Cufon.replace('.lighter', { fontFamily: 'OpenSansLighter' });
 		  Cufon.replace('.bold'); 
 	</script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+	$("#registerSubmit").click(function() {
+  
+		$.post( "ws/rest.php", { email: $("#registerEmail").val(), password: $("#registerPassword").val() })
+			.done(function( data ) {
+		    	console.log(data);
+		    	window.alert(data.message);
+			},"json");
+	    
+		});
+	});	
+	</script>
 	<title></title>
 </head>
 <body>
@@ -276,10 +289,10 @@
 					<div>We don’t post anything to facebook</div>
 					<div><span>----------------</span> OR <span>----------------</span></div>
 					<div>Fill out this form to register with Knockout Network</div>
-					<div><input type="text" name="email" placeholder="Email" /></div>
-					<div><input type="text" name="password" placeholder="Password" /></div>
+					<div><input id="registerEmail" type="text" name="email" placeholder="Email" /></div>
+					<div><input id="registerPassword" type="password" name="password" placeholder="Password" /></div>
 					<div>By joining, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></div>
-					<div id="join-free"><img src='./images/register/join-free.png' style='width:50%'></div>
+					<div id="join-free"><img id="registerSubmit" src='./images/register/join-free.png' style='width:50%'></div>
 		        </div>
 		      
 		    </div>
