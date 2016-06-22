@@ -1038,3 +1038,19 @@ footer .clearfix {
     background-size: cover;
     overflow: hidden;
 }
+
+/**
+* Registration styles
+*/
+.registration{
+	margin-top: 20px;
+    height: 40px;
+    font-size: 12pt;
+    width: 290px;
+}
+
+.registration_tiny{
+	margin-top: 20px;
+    font-size: 8pt;
+    font-weight: bold;
+}

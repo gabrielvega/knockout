@@ -16,30 +16,27 @@ switch($_SERVER["REQUEST_METHOD"]){
     	'password' => '123456',
     	'charset' => 'utf8',
     	'prefix' => 'knockout_'
-    	
-    	
      ]);
+     
     $last_user_id = $database->insert("users", [
 	"identifier" => $email,
 	"email" => $email,
 	"password" => $password
     ]);
+    
     header('Content-Type: application/json; charset=utf8');
     if($last_user_id > 0){
         echo json_encode([code=>"OK",message=>"Welcome, ".$email.". User successfully registered.",id=>$last_user_id]);
     }else{
         echo json_encode(array(code=>"FAIL",message=>"Sorry, an error has occurred. ".$database->error()[2],id=>$last_user_id,query=>$database->last_query()), JSON_PRETTY_PRINT);//
     }
-    
-    
- 
-
     break;
     case "GET":
     echo json_encode(["method"=>"GET","GET"=>$_GET], JSON_PRETTY_PRINT);
     break;
     default:
-    echo json_encode(["method"=>"NOTHING TO DO HERE!"], JSON_PRETTY_PRINT);    
+    header("Location:../index.html");
+    break;
 }
 
 exit;
